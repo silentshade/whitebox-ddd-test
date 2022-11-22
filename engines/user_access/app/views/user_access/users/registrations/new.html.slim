@@ -1,0 +1,30 @@
+.row.mt-3
+  .col-4
+    h2
+      | Sign up
+    = form_with(scope: :user, url: registration_path(:user), data: { turbo: false }) do |f|
+      .field.mt-1
+        = f.label :email
+        = f.email_field :email, autocomplete: "email", class: 'form-control'
+      .field.mt-1
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+      .field.mt-1
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+      .field.mt-1
+        = f.label :password
+        - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            |  characters minimum)
+        br
+        = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+      .field.mt-1
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
+      .actions.mt-3.d-flex.justify-content-between.align-items-center
+        = render "user_access/users/shared/links"
+        = f.submit "Sign up", class: 'btn btn-success'

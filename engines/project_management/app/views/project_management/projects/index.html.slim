@@ -1,0 +1,13 @@
+.row.mt-3
+  .col
+    h2 Projects
+    - @presenter.projects.each do |project|
+      .card.mt-3
+        .card-header
+          span= link_to "[#{project.identifier}]", project_management_project_path(project)
+          span.ms-2= project.title
+        .card-body
+          .card-text= project.description
+    .row.mt-3
+      .col
+        = link_to 'Add New Project', new_project_management_project_path, class: 'btn btn-success'

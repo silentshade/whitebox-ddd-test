@@ -1,0 +1,12 @@
+.row.mt-3
+  .col
+    h2 New task
+.row
+  .col-6
+    = form_with model: @presenter.task, url: project_management_project_tasks_path, data: { 'turbo-frame': '_top' } do |f|
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+      = f.label :description
+      = f.text_area :description, class: 'form-control'
+      .d-flex.align-items-center.justify-content-end
+        = f.submit 'Submit', class: 'btn btn-primary mt-2'

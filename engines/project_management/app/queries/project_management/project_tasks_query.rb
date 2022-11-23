@@ -3,7 +3,7 @@ module ProjectManagement
     option :project_id
 
     def call
-      Task.where(project_id: project_id)
+      Task.where(project_id: project_id).includes(:assignees)
     end
   end
 end

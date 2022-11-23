@@ -9,8 +9,6 @@ module ProjectManagement
       result = yield save_project(project)
 
       Success(result)
-    rescue StandardError => e
-      Failure(e.message)
     end
 
     private

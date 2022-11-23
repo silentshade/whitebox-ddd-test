@@ -10,6 +10,7 @@ PATHS = %w[spec spec/factories].freeze
 
 Dir.glob('engines/*').each do |engine_root|
   Dir[Rails.root.join(engine_root, 'spec', 'factories', '**', '*.rb')].sort.each { |f| require f }
+  Dir[Rails.root.join(engine_root, 'spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 

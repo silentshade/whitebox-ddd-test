@@ -1,0 +1,14 @@
+.row.mt-3
+  .col
+    h2 Assigned Tasks
+    - @presenter.tasks.each do |task|
+      .card.mt-3
+        .card-header.d-flex.justify-content-between
+          div
+            span= "[#{task.identifier}]"
+            span.ms-2= task.title
+          .d-flex.ms-3
+            - task.assignees.each do |assignee|
+              .me-1.bi.bi-person-bounding-box data-bs-toggle="tooltip" title=(assignee.email)
+        .card-body
+          .card-text= task.description

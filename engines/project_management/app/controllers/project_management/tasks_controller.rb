@@ -1,5 +1,9 @@
 module ProjectManagement
   class TasksController < ApplicationController
+    def index
+      @presenter = TasksIndexPresenter.new(current_user_identifier:)
+    end
+
     def new
       @presenter = NewTaskPresenter.new
     end
@@ -39,7 +43,7 @@ module ProjectManagement
       end
 
       task_monad = TaskByIdQuery.call(task_id: params[:id])
-      @presenter = TaskRowPresenter.new(task: task_monad.success)
+      @presenter = TaskRowPresenter.new(task: task_monad.success, available_users: UserAccess::AllUsersService.new.call)
 
       respond_to do |format|
         format.turbo_stream { flash.now[:success] = 'Assignee added' }

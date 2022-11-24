@@ -15,15 +15,16 @@
                       data: { 'turbo-method': :delete, 'turbo-confirm': 'Do you really want to remove assignee?' }
                 i.bi.bi-x.position-relative.top-0.end-0
         .col-3.d-flex.justify-content-end.align-items-center
-          div.dropdown
-            button#selectUser.btn.dropdown-toggle data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              i.bi.bi-person-plus-fill
-            .dropdown-menu aria-labelledby='selectUser'
-              - presenter.users.each do |user|
-                = button_to "#{user.first_name} #{user.last_name} #{user.email}",
-                        add_assignee_project_management_project_task_path(project_id: presenter.project_id, id: presenter.id, email: user.email),
-                        class: 'dropdown-item',
-                        data: { 'turbo-method': :post, 'turbo-frame': '_top' }
+          - if presenter.users.any?
+            div.dropdown
+              button#selectUser.btn.dropdown-toggle data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                i.bi.bi-person-plus-fill
+              .dropdown-menu aria-labelledby='selectUser'
+                - presenter.users.each do |user|
+                  = button_to "#{user.first_name} #{user.last_name} #{user.email}",
+                          add_assignee_project_management_project_task_path(project_id: presenter.project_id, id: presenter.id, email: user.email),
+                          class: 'dropdown-item',
+                          data: { 'turbo-method': :post, 'turbo-frame': '_top' }
           = link_to project_management_project_task_path(project_id: presenter.project_id, id: presenter.id),
                   data: { 'turbo-method': :delete, 'turbo-confirm': 'Do you really want to remove task?' }
             i.bi.bi-trash

@@ -6,6 +6,7 @@ module UserAccess
 
     attr_reader *ALLOWED_ATTRS
     attr_reader :error
+    attr_reader :user
 
     def initialize(user_params = {})
       ALLOWED_ATTRS.each do |attr|
@@ -14,7 +15,7 @@ module UserAccess
     end
 
     def call
-      user.save!
+      new_user.save!
 
       self
     rescue StandardError => e
@@ -28,8 +29,8 @@ module UserAccess
 
     private
 
-    def user
-      @_user ||= User.new(
+    def new_user
+      @user = User.new(
         identifier: SecureRandom.uuid,
         email: email,
         first_name: first_name,

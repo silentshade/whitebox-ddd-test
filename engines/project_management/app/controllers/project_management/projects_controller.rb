@@ -1,7 +1,7 @@
 module ProjectManagement
   class ProjectsController < ApplicationController
     def index
-      @presenter = ProjectsIndexPresenter.new(current_user_identifier: current_user_identifier)
+      @presenter = ProjectsIndexPresenter.new(current_user_identifier:)
     end
 
     def new

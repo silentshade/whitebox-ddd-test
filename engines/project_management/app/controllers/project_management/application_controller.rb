@@ -10,7 +10,11 @@ module ProjectManagement
     private
 
     def authenticate_user!
-      @auth_service = UserAccess::UserAuthService.call(request.env['warden'])
+      auth_service.call
+    end
+
+    def auth_service
+      @_auth_service ||= UserAccess::UserAuthService.new(request.env['warden'])
     end
   end
 end

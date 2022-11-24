@@ -9,9 +9,13 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    nav.navbar.navbar-light.bg-light
+    nav.navbar.navbar-light.bg-light.navbar-expand-md
       .container
-        a.navbar-brand herf="/" Whitebox DDD Example
+        a.navbar-brand href="/" Whitebox DDD Example
+        .collapse.navbar-collapse
+          ul.navbar-nav.me-auto
+            li.nav-item= link_to 'My Projects', project_management_projects_path, class: 'nav-link'
+            li.nav-item= link_to 'Assigned Tasks', project_management_tasks_path, class: 'nav-link'
         - if current_user
           .dropdown
             button#userActions.btn.dropdown-toggle data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

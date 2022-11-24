@@ -15,4 +15,4 @@
           = f.label :remember_me, class: 'ms-1'
       .actions.mt-3.d-flex.justify-content-between.align-items-center
         = render "devise/shared/links"
-        = f.submit "Log in", class: 'btn btn-success'
+        = f.submit "Log in", class: 'btn btn-success', data: { turbo: false }

@@ -1,13 +1,23 @@
 # frozen_string_literal: true
 
 module UserAccess
-  class UserAuthService < ::DryService
-    param :warden, required: true, reader: :private
+  class UserAuthService
+    attr_reader :warden, :error
+
+    def initialize(warden)
+      @warden = warden
+    end
 
     def call
       authenticate_user!
-
       self
+    rescue StandardError => e
+      @error = e
+      self
+    end
+
+    def success?
+      !@error
     end
 
     def current_user_identifier

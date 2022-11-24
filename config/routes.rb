@@ -13,12 +13,13 @@ Rails.application.routes.draw do
 
   namespace :project_management do
     resources :projects do
-      resources :tasks do
+      resources :tasks, except: %i[index] do
         member do
           post :add_assignee
         end
       end
     end
     resources :assignees, only: %i[destroy]
+    resources :tasks, only: %i[index]
   end
 end

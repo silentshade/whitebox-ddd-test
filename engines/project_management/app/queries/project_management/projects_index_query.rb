@@ -1,5 +1,5 @@
 module ProjectManagement
-  class ProjectIndexQuery < ::DryService
+  class ProjectsIndexQuery < ::DryService
     option :user_identifier, optional: true
 
     def call

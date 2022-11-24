@@ -19,7 +19,8 @@ folders.
  * Project Management
 
 Base folder acts more like infrastructure layer. I tried to loose coupling between contexts,
-and also showed that each context could be written in it's own manner.
+and also showed that each context could be written in it's own manner, for example ProjectManagement
+context implements Command/Query pattern, when UserAccess does not.
 
 Requirements:
 

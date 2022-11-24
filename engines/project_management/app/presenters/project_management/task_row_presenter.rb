@@ -8,12 +8,14 @@ module ProjectManagement
       @available_users = available_users
     end
 
-    def assignee_identifiers
-      @_assignee_identifiers ||= assignees.map(&:user_identifier)
-    end
-
     def users
       @_users ||= @available_users.select {|u| !assignee_identifiers.include?(u.identifier) }
+    end
+
+    private
+
+    def assignee_identifiers
+      @_assignee_identifiers ||= assignees.map(&:user_identifier)
     end
   end
 end

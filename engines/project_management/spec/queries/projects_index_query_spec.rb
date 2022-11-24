@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProjectManagement::ProjectIndexQuery do
+RSpec.describe ProjectManagement::ProjectsIndexQuery do
   subject { described_class }
   let(:user_identifier) { SecureRandom.uuid }
   let(:projects) { FactoryBot.create_list(:project, 2, user_identifier:) }

@@ -1,24 +1,41 @@
-# README
+# Whitebox DDD Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project implements some of DDD principles with Ruby On Rails 7
+It's not organized with a classic DDD approach, having layers
+ * Infrastructure
+ * Application
+ * Domain
+ * Presenter
+ 
+ Instead project is split to bounded contexts (engines folder). Each context has own 
+* app
+* config (when required)
+* spec
 
-Things you may want to cover:
+folders. 
+  
+2 Bounded Contexts were extracted:
+ * User Access
+ * Project Management
 
-* Ruby version
+Base folder acts more like infrastructure layer. I tried to loose coupling between contexts,
+and also showed that each context could be written in it's own manner.
 
-* System dependencies
+Requirements:
 
-* Configuration
+`Docker` and `docker-compose v3` 
 
-* Database creation
+Spin up local environment:
 
-* Database initialization
+```Bash
+docker-compose build
+docker-compose up -d
+```
 
-* How to run the test suite
+Visit `localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
+Run specs
 
-* Deployment instructions
-
-* ...
+```Bash
+docker-compose exec web rspec engines
+```

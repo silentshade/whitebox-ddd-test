@@ -6,7 +6,13 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'selenium/webdriver'
+
 PATHS = %w[spec spec/factories].freeze
+
+Dir[Rails.root.join('spec', 'support', '*.rb')].sort.each { |f| require f }
 
 Dir.glob('engines/*').each do |engine_root|
   Dir[Rails.root.join(engine_root, 'spec', 'factories', '**', '*.rb')].sort.each { |f| require f }

@@ -7,5 +7,10 @@ RSpec::Matchers.define :not_talk_to_db do |_expected|
     end
     block_to_test.call
   end
+
+  description do
+    "RSpec matcher for N+1 queries"
+  end
+
   supports_block_expectations
 end

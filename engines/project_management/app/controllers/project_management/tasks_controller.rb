@@ -36,7 +36,7 @@ module ProjectManagement
     end
 
     def add_assignee
-      result = AssignTaskToAssigneeService.call(task_id: params[:id], user_email: params[:email])
+      result = AssignTaskToAssigneeService.call(task_id: params[:id], user_email: params[:email], current_user_identifier:)
       if result.failure?
         flash[:error] = result.failure
         return redirect_to project_management_project_path(id: params[:project_id]), status: :unprocessable_entity

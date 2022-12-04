@@ -14,7 +14,7 @@ module ProjectManagement
     private
 
     def find_tasks
-      result = UnassignedTasksQuery.call
+      result = UnassignedTasksPastDayQuery.call
       Success(result)
     end
 

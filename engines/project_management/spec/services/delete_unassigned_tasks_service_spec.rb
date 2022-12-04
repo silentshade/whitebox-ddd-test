@@ -11,7 +11,7 @@ RSpec.describe ProjectManagement::DeleteUnassignedTasksService do
     let!(:tasks) { FactoryBot.create_list(:task, 2, created_at: Time.current - 25.hours) }
 
     it 'calls DeleteTasksCommand with found tasks' do
-      expect(ProjectManagement::DeleteTasksCommand).to receive(:call).with(tasks: tasks).and_call_original
+      expect(ProjectManagement::DeleteTasksCommand).to receive(:call).with(tasks: match_array(tasks)).and_call_original
     end
   end
 

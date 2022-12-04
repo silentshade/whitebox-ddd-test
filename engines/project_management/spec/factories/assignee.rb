@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assignee, class: 'ProjectManagement::Assignee' do
-    association(:task)
+    task_id { 100 }
     email { 'example@example.com' }
     user_identifier { SecureRandom.uuid }
   end

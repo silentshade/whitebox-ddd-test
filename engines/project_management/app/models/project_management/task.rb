@@ -3,7 +3,7 @@ module ProjectManagement
     include ActiveModel::Validations
     validates_with IdentifierValidator
 
-    validates :title, presence: true
+    validates :title, :project_id, presence: true
 
     has_many :assignees, class_name: 'ProjectManagement::Assignee'
   end
